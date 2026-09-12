@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use './variables' as *;
+
+@mixin focus-ring($color: $color-teal) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 2px;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// Apply a theme's tokens as CSS custom properties on a [data-theme] element.
+@mixin theme-tokens($id, $tokens) {
+  &[data-theme='#{$id}'] {
+    --theme-bg: #{map.get($tokens, background)};
+    --theme-primary: #{map.get($tokens, primary)};
+    --theme-secondary: #{map.get($tokens, secondary)};
+    --theme-blue: #{map.get($tokens, blue)};
+    --theme-orange: #{map.get($tokens, orange)};
+    --theme-off-white: #{map.get($tokens, off-white)};
+    --theme-card-back: #{map.get($tokens, card-back)};
+    --theme-card-icon: #{map.get($tokens, card-icon)};
+    --theme-card-back-img: #{map.get($tokens, card-back-img)};
+  }
+}

@@ -1,0 +1,172 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.screen--result {
+  background: $color-bg;
+}
+
+.result {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $color-off-white;
+  padding: 2rem;
+  overflow: hidden;
+
+  // ---- Phase 1: game over ------------------------------------------------
+
+  &__gameover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: game-over-enter 0.7s ease both;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: clamp(3.5rem, 11vw, 9rem);
+    letter-spacing: -0.02em;
+    color: $color-teal;
+    text-shadow: 0 0 44px rgba(79, 208, 189, 0.35);
+  }
+
+  &__subtitle {
+    margin: 28px 0 22px;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-muted;
+  }
+
+  &__scores {
+    display: flex;
+    gap: clamp(2rem, 6vw, 4.5rem);
+  }
+
+  &__score {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &-name {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    &-value {
+      font-family: $font-display;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    &--blue {
+      color: $color-blue;
+    }
+
+    &--orange {
+      color: $color-orange;
+    }
+  }
+
+  // ---- Phase 2: winner ----------------------------------------------------
+
+  &__winner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: winner-enter 0.6s ease both;
+
+    &--blue {
+      --winner-color: #{$color-blue};
+    }
+
+    &--orange {
+      --winner-color: #{$color-orange};
+    }
+  }
+
+  &__eyebrow {
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-muted;
+  }
+
+  &__winner-name {
+    margin: 0 0 26px;
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    letter-spacing: -0.01em;
+    color: var(--winner-color);
+  }
+
+  &__pawn {
+    display: inline-flex;
+    margin-bottom: 40px;
+    color: var(--winner-color);
+    opacity: 0.9;
+  }
+
+  // ---- Phase 2: draw ------------------------------------------------------
+
+  &__draw {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: winner-enter 0.6s ease both;
+  }
+
+  &__draw-title {
+    margin: 0 0 30px;
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: clamp(4rem, 14vw, 11rem);
+    letter-spacing: -0.01em;
+    color: $color-teal;
+    text-shadow:
+      0 4px 0 rgba(0, 0, 0, 0.35),
+      0 0 44px rgba(79, 208, 189, 0.3);
+  }
+
+  &__scales {
+    display: inline-flex;
+    margin-bottom: 40px;
+    color: $color-teal;
+    opacity: 0.9;
+  }
+}
+
+// ---- Confetti -------------------------------------------------------------
+
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 240px;
+  pointer-events: none;
+  z-index: 0;
+
+  &__piece {
+    position: absolute;
+    top: 0;
+    display: block;
+    animation-name: confetti-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @include reduced-motion {
+    display: none;
+  }
+}

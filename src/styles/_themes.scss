@@ -1,0 +1,12 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+// Emit theme tokens as custom properties for every element that carries a
+// `data-theme` attribute (game screen root + settings preview). Both are
+// always assigned a data-theme value when rendered, so no fallback is needed.
+.screen--game,
+.settings__preview {
+  @each $id, $tokens in $themes {
+    @include theme-tokens($id, $tokens);
+  }
+}

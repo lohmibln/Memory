@@ -1,0 +1,69 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.home {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: $color-bg;
+  color: $color-off-white;
+  overflow: hidden;
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    margin-left: clamp(2rem, 10vw, 10rem);
+    max-width: 680px;
+    animation: page-enter 0.35s ease both;
+  }
+
+  &__eyebrow {
+    margin: 0 0 14px;
+    font-family: $font-body;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: $color-muted;
+  }
+
+  &__headline {
+    margin: 0 0 44px;
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+
+  &__play {
+    font-size: 1.15rem;
+  }
+
+  &__controller {
+    position: absolute;
+    left: -160px;
+    bottom: -180px;
+    color: #8a875c;
+    opacity: 0.26;
+    pointer-events: none;
+    line-height: 1;
+    z-index: 0;
+    // Material Symbols sets font-size: 24px on the glyph class — override so
+    // the decorative controller actually fills the background.
+    font-size: clamp(280px, 48vw, 620px);
+    animation: controller-float 5.5s ease-in-out infinite;
+
+    &-icon,
+    .material-symbols-outlined {
+      font-size: inherit !important;
+      line-height: 1;
+      display: block;
+    }
+  }
+
+  @include reduced-motion {
+    &__controller {
+      animation: none;
+    }
+  }
+}

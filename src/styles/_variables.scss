@@ -1,0 +1,71 @@
+// ---------------------------------------------------------------------------
+// Design tokens & theme map
+// ---------------------------------------------------------------------------
+
+$color-bg: #30302f;
+$color-teal: #4fd0bd;
+$color-blue: #2da9f3;
+$color-orange: #ff8b36;
+$color-yellow: #f5ed68;
+$color-yellow-bright: #fbf28f;
+$color-off-white: #f4f4f1;
+$color-ink: #1c1c1b;
+$color-text: #20201f;
+$color-muted: #8a8a86;
+
+// Typography
+$font-display: 'Red Rose', Georgia, 'Times New Roman', serif;
+$font-body: 'Almarai', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+// Radii
+$radius-sm: 3px;
+$radius-md: 8px;
+$radius-lg: 20px;
+
+// Theme map — consumed by _themes.scss to emit [data-theme] custom props.
+$themes: (
+  code: (
+    background: #30302f,
+    primary: #4fd0bd,
+    secondary: #2da9f3,
+    blue: #2da9f3,
+    orange: #ff8b36,
+    off-white: #f4f4f1,
+    card-back: linear-gradient(145deg, #55d8c5, #43c8b7 55%, #36aa9e),
+    card-icon: #eafffb,
+    card-back-img: url('/cards/backs/code-vibes.svg'),
+  ),
+  gaming: (
+    background: #191722,
+    primary: #9b5cf6,
+    secondary: #f472b6,
+    blue: #38bdf8,
+    orange: #fb7185,
+    off-white: #f3eefc,
+    card-back: linear-gradient(145deg, #8b5cf6, #6d3bd0 55%, #4c2a9e),
+    card-icon: #f5eeff,
+    card-back-img: url('/cards/backs/game.svg'),
+  ),
+  da-projects: (
+    background: #1f2430,
+    primary: #f59e0b,
+    secondary: #14b8a6,
+    blue: #3b82f6,
+    orange: #f97316,
+    off-white: #f8f5ee,
+    card-back: linear-gradient(145deg, #f59e0b, #d97706 55%, #b45309),
+    card-icon: #fff7e6,
+    card-back-img: url('/cards/backs/da-projects.svg'),
+  ),
+  foods: (
+    background: #2b2018,
+    primary: #f97316,
+    secondary: #fbbf24,
+    blue: #60a5fa,
+    orange: #fb923c,
+    off-white: #fdf6ec,
+    card-back: linear-gradient(145deg, #fb923c, #f97316 55%, #ea580c),
+    card-icon: #fff3e8,
+    card-back-img: url('/cards/backs/food.svg'),
+  ),
+);

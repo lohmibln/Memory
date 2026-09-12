@@ -1,0 +1,79 @@
+@use './variables' as *;
+@use './animations';
+@use './themes';
+@use './buttons';
+@use './home';
+@use './settings';
+@use './game';
+@use './results';
+@use './dialog';
+@use './responsive';
+
+// ---- Base ----------------------------------------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  font-family: $font-body;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: $color-bg;
+  color: $color-off-white;
+}
+
+button {
+  font: inherit;
+}
+
+// ---- Material Symbols icon font --------------------------------------------
+// Glyphs inherit their size from CSS (font-size) or an inline style set by
+// the icon helper — never hard-coded here, so icons scale with the layout.
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  user-select: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
