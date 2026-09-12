@@ -33,7 +33,7 @@ $themes: (
     off-white: #f4f4f1,
     card-back: linear-gradient(145deg, #55d8c5, #43c8b7 55%, #36aa9e),
     card-icon: #eafffb,
-    card-back-img: url('/cards/backs/code-vibes.svg'),
+    card-back-img: none,
   ),
   gaming: (
     background: #191722,
@@ -44,7 +44,7 @@ $themes: (
     off-white: #f3eefc,
     card-back: linear-gradient(145deg, #8b5cf6, #6d3bd0 55%, #4c2a9e),
     card-icon: #f5eeff,
-    card-back-img: url('/cards/backs/game.svg'),
+    card-back-img: none,
   ),
   da-projects: (
     background: #1f2430,
@@ -55,7 +55,7 @@ $themes: (
     off-white: #f8f5ee,
     card-back: linear-gradient(145deg, #f59e0b, #d97706 55%, #b45309),
     card-icon: #fff7e6,
-    card-back-img: url('/cards/backs/da-projects.svg'),
+    card-back-img: none,
   ),
   foods: (
     background: #2b2018,
@@ -66,6 +66,6 @@ $themes: (
     off-white: #fdf6ec,
     card-back: linear-gradient(145deg, #fb923c, #f97316 55%, #ea580c),
     card-icon: #fff3e8,
-    card-back-img: url('/cards/backs/food.svg'),
+    card-back-img: none,
   ),
 );

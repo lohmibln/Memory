@@ -5,11 +5,13 @@ import type { MemorySymbol, ThemeDefinition, ThemeId } from './types';
  * (extracted per theme, 18 motifs each). Each motif is an <img> so the
  * artwork scales cleanly at any card size without clipping.
  */
+const asset = (path: string): string => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 function art(theme: string, num: number, label: string): MemorySymbol {
   return {
     id: `${theme}-${num}`,
     label,
-    icon: `<img class="card-icon" src="/cards/icons/${theme}-${num}.svg" alt="" draggable="false" />`,
+    icon: `<img class="card-icon" src="${asset(`cards/icons/${theme}-${num}.svg`)}" alt="" draggable="false" />`,
   };
 }
 
@@ -117,7 +119,7 @@ export const THEMES: ThemeDefinition[] = [
     offWhite: '#f4f4f1',
     cardBackGradient: 'linear-gradient(145deg, #55d8c5, #43c8b7 55%, #36aa9e)',
     cardBackIcon: '#eafffb',
-    cardBackImage: '/cards/backs/code-vibes.svg',
+    cardBackImage: asset('cards/backs/code-vibes.svg'),
     symbols: codeSymbols,
     enabled: true,
   },
@@ -132,7 +134,7 @@ export const THEMES: ThemeDefinition[] = [
     offWhite: '#f3eefc',
     cardBackGradient: 'linear-gradient(145deg, #8b5cf6, #6d3bd0 55%, #4c2a9e)',
     cardBackIcon: '#f5eeff',
-    cardBackImage: '/cards/backs/game.svg',
+    cardBackImage: asset('cards/backs/game.svg'),
     symbols: gamingSymbols,
     enabled: true,
   },
@@ -147,7 +149,7 @@ export const THEMES: ThemeDefinition[] = [
     offWhite: '#f8f5ee',
     cardBackGradient: 'linear-gradient(145deg, #f59e0b, #d97706 55%, #b45309)',
     cardBackIcon: '#fff7e6',
-    cardBackImage: '/cards/backs/da-projects.svg',
+    cardBackImage: asset('cards/backs/da-projects.svg'),
     symbols: daSymbols,
     enabled: true,
   },
@@ -162,7 +164,7 @@ export const THEMES: ThemeDefinition[] = [
     offWhite: '#fdf6ec',
     cardBackGradient: 'linear-gradient(145deg, #fb923c, #f97316 55%, #ea580c)',
     cardBackIcon: '#fff3e8',
-    cardBackImage: '/cards/backs/food.svg',
+    cardBackImage: asset('cards/backs/food.svg'),
     symbols: foodSymbols,
     enabled: true,
   },
@@ -170,4 +172,14 @@ export const THEMES: ThemeDefinition[] = [
 
 export function getTheme(id: ThemeId): ThemeDefinition {
   return THEMES.find((t) => t.id === id) ?? THEMES[0];
+}
+
+/** Applies theme id + card-back image CSS var (works with relative `base`). */
+export function applyTheme(el: HTMLElement, id: ThemeId): void {
+  const theme = getTheme(id);
+  el.dataset.theme = theme.id;
+  // Custom-property urls are resolved against the CSS file (in /assets/),
+  // so use an absolute page URL instead of a relative path.
+  const absoluteBack = new URL(theme.cardBackImage, window.location.href).href;
+  el.style.setProperty('--theme-card-back-img', `url("${absoluteBack}")`);
 }

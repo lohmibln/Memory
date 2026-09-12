@@ -1,6 +1,7 @@
 import type { GameState } from '../game/types';
 import { columnsForSize, createInitialState } from '../game/gameState';
 import { Game } from '../game/Game';
+import { applyTheme } from '../game/themes';
 import { renderMemoryCard } from '../components/memoryCard';
 import { renderScoreBoard, updateScoreBoard } from '../components/scoreBoard';
 import { renderPlayerIndicator, updatePlayerIndicator } from '../components/playerIndicator';
@@ -25,7 +26,7 @@ export function renderGameScreen(root: HTMLElement, deps: ScreenDeps): void {
   let exitOpen = false;
 
   root.className = 'screen screen--game';
-  root.dataset.theme = settings.theme;
+  applyTheme(root, settings.theme);
 
   const main = document.createElement('main');
   main.className = 'game';

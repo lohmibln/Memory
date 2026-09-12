@@ -1,6 +1,6 @@
 import type { ScreenDeps } from './types';
 import type { BoardSize, GameSettings, PlayerId, ThemeId } from '../game/types';
-import { getTheme, THEMES } from '../game/themes';
+import { applyTheme, getTheme, THEMES } from '../game/themes';
 import { columnsForSize } from '../game/gameState';
 import {
   iconCards,
@@ -224,7 +224,7 @@ function buildPreview(
   animate: boolean,
 ): void {
   container.innerHTML = '';
-  container.dataset.theme = settings.theme;
+  applyTheme(container, settings.theme);
 
   const theme = getTheme(settings.theme);
 
